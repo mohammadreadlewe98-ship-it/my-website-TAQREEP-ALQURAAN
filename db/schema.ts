@@ -1,13 +1,13 @@
 import {
-  mysqlTable,
+  pgTable,
   serial,
   varchar,
   text,
   timestamp,
-  int,
-} from "drizzle-orm/mysql-core";
+  integer,
+} from "drizzle-orm/pg-core";
 
-export const questions = mysqlTable("questions", {
+export const questions = pgTable("questions", {
   id: serial("id").primaryKey(),
   text: text("text").notNull(),
   optionA: varchar("option_a", { length: 500 }).notNull(),
@@ -21,24 +21,24 @@ export const questions = mysqlTable("questions", {
 export type Question = typeof questions.$inferSelect;
 export type InsertQuestion = typeof questions.$inferInsert;
 
-export const studentResults = mysqlTable("student_results", {
+export const studentResults = pgTable("student_results", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 255 }).notNull(),
   answersJson: text("answers_json").notNull(),
-  score: int("score").notNull(),
-  totalQuestions: int("total_questions").notNull(),
-  correctCount: int("correct_count").notNull(),
-  wrongCount: int("wrong_count").notNull(),
-  timeSpent: int("time_spent").notNull(),
+  score: integer("score").notNull(),
+  totalQuestions: integer("total_questions").notNull(),
+  correctCount: integer("correct_count").notNull(),
+  wrongCount: integer("wrong_count").notNull(),
+  timeSpent: integer("time_spent").notNull(),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
 export type StudentResult = typeof studentResults.$inferSelect;
 export type InsertStudentResult = typeof studentResults.$inferInsert;
 
-export const examStatus = mysqlTable("exam_status", {
+export const examStatus = pgTable("exam_status", {
   id: serial("id").primaryKey(),
-  active: int("active").notNull().default(1),
+  active: integer("active").notNull().default(1),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
