@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 25% 96%;
+    --foreground: 240 29% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 29% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 29% 14%;
+    --primary: 158 55% 23%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 40 60% 47%;
+    --secondary-foreground: 240 29% 14%;
+    --muted: 40 20% 94%;
+    --muted-foreground: 240 8% 40%;
+    --accent: 40 60% 47%;
+    --accent-foreground: 240 29% 14%;
+    --destructive: 5 65% 46%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 38 22% 77%;
+    --input: 38 22% 77%;
+    --ring: 158 55% 23%;
+    --radius: 0.75rem;
+    --sidebar-background: 158 55% 23%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 40 60% 47%;
+    --sidebar-primary-foreground: 240 29% 14%;
+    --sidebar-accent: 158 40% 30%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 158 40% 30%;
+    --sidebar-ring: 40 60% 47%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Tajawal', sans-serif;
+  }
+}
+
+@layer components {
+  .islamic-pattern {
+    background-image: url('/pattern-bg.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .islamic-card {
+    @apply bg-white rounded-2xl border border-[#d4c9b5] shadow-[0_4px_20px_rgba(26,95,74,0.08)];
+  }
+
+  .islamic-card-hover {
+    @apply transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_8px_32px_rgba(26,95,74,0.12)];
+  }
+
+  .btn-primary {
+    @apply bg-[#1a5f4a] text-white font-semibold rounded-xl px-6 py-3 transition-all duration-200;
+    @apply hover:bg-[#0d3d2e] hover:scale-[1.02] hover:shadow-[0_2px_8px_rgba(26,95,74,0.15)];
+    @apply active:scale-[0.98];
+  }
+
+  .btn-gold {
+    @apply bg-[#c49a2c] text-[#1a1a2e] font-semibold rounded-xl px-6 py-3 transition-all duration-200;
+    @apply hover:bg-[#b38a1f] hover:scale-[1.02];
+    @apply active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply border-2 border-[#1a5f4a] text-[#1a5f4a] font-semibold rounded-xl px-6 py-3 transition-all duration-200;
+    @apply hover:bg-[#e8f5ee] hover:scale-[1.02];
+    @apply active:scale-[0.98];
+  }
+
+  .btn-danger {
+    @apply bg-[#c0392b] text-white font-semibold rounded-xl px-6 py-3 transition-all duration-200;
+    @apply hover:bg-[#a93226] hover:scale-[1.02];
+    @apply active:scale-[0.98];
+  }
+
+  .input-islamic {
+    @apply w-full border-2 border-[#d4c9b5] rounded-[10px] px-4 py-3 text-right transition-all duration-200;
+    @apply focus:border-[#1a5f4a] focus:outline-none focus:ring-2 focus:ring-[#1a5f4a]/20;
+    @apply placeholder:text-[#999];
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.4s ease forwards;
+  }
+
+  .animate-shake {
+    animation: shake 0.3s ease-in-out;
+  }
+
+  .animate-blink {
+    animation: blink 0.5s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
